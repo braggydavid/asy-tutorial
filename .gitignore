@@ -1,0 +1,6 @@
+*.pre
+*.log
+*.aux
+*.tex
+*.asy
+*.gz
