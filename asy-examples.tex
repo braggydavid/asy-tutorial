@@ -148,6 +148,105 @@ for (int i=0; i<s.length; ++i) {
 
 $\text{(A) } \text{A} \qquad $$\text{(B) } \text{B} \qquad $$\text{(C) } \text{C}  \qquad $$\text{(D) } \text{D} \qquad $$\text{(E) } \text{E}$
 
+\item (Math Kangaroo G3-4 2011, P21)  Andrea made the pattern in the picture out of several identical tiles. None of the tiles overlap each other. Which of the following tiles could she definitely not have used?
+
+\begin{center}
+\includegraphics[scale=0.6]{imgs/2011-g3-4-p21-1.png}
+\end{center}
+
+\begin{center}
+\begin{asy}
+/* Math Kangaroo G3-4 2011 P21-1, revised by Teacher David */
+size(4cm);
+defaultpen(linewidth(1pt));
+
+void plot(pair o) {
+    path a = rotate(30)*polygon(6); /* hexagon at (0,0) */
+    path b = shift(o)* a; /* shift hexagon to (o) */
+    filldraw(b, gray); /* fill draw hexagon */
+
+    for (int i=0; i<6; ++i) {
+        pair x = o + dir(30+i*60);
+        path p = o -- x;
+        draw(p);
+    }
+}
+
+pair a1 = (0,0);
+plot(a1);
+
+pair a2 = sqrt(3)*dir(-60);
+plot(a2);
+
+pair a3 = sqrt(3)*dir(-120);
+plot(a3);
+\end{asy}
+\end{center}
+
+
+\begin{center}
+\includegraphics[scale=0.6]{imgs/2011-g3-4-p21-2.png}
+\end{center}
+
+
+\begin{center}
+\begin{asy}
+/* Math Kangaroo G3-4 2011 P21-1, revised by Teacher David */
+size(12cm);
+defaultpen(linewidth(1pt));
+
+void plot(pair o, int start, int length) {
+    for (int i=start; i<start+length; ++i) {
+        int a1 = i*60 - 30;
+        pair x = o+dir(a1);
+        pair y = o+dir(a1+60);
+        path p = o -- x -- y -- cycle;
+        filldraw(p, gray);
+    }
+}
+pair a1 = (0,0);
+plot(a1, 0, 6);
+
+pair a2 = (4,0);
+plot(a2, 0, 2);
+
+pair a3 = (8,0);
+plot(a3, 2, 5);
+pair a4 = (8+sqrt(3), 0);
+plot(a4, 3, 1);
+
+pair a5 = (12, 0);
+plot(a5, 1, 4);
+pair a6 = (12,-1);
+plot(a6, 3, 2);
+
+pair a7 = (16,0);
+plot(a7, 2, 3);
+
+
+/* add labels */
+string [] s = {"(A)", "(B)", "(C)", "(D)", "(E)"};
+pair [] a = {(0, 1.75), (4, 1.75), (8, 1.75), (12, 1.75), (16, 1.75)};
+for (int i=0; i<s.length; ++i) {
+    label(s[i], a[i]);
+}
+
+/* The original graph can also be plot in the following way:
+pair a8 = (20,0);
+plot(a8, 0, 6);
+pair a9 = a8+sqrt(3)*dir(-60);
+plot(a9, 0, 6);
+pair a10 = a8+sqrt(3)*dir(-120);
+plot(a10, 0, 6);
+*/
+
+\end{asy}
+\end{center}
+
+
+$\text{(A) } \text{A} \qquad $$\text{(B) } \text{B} \qquad $$\text{(C) } \text{C}  \qquad $$\text{(D) } \text{D} \qquad $$\text{(E) } \text{E}$
+
+
 \end{enumerate}
 
 \end{document}
