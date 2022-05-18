@@ -26,6 +26,8 @@
 \usepackage{stmaryrd}
 \usepackage{marvosym}
 \usepackage{pifont}
+\usepackage{fontawesome}
+
 %SetFonts
 
 %SetFonts
@@ -245,6 +247,122 @@ plot(a10, 0, 6);
 
 
 $\text{(A) } \text{A} \qquad $$\text{(B) } \text{B} \qquad $$\text{(C) } \text{C}  \qquad $$\text{(D) } \text{D} \qquad $$\text{(E) } \text{E}$
+
+\item (Math Kangaroo G5-6 2019 P15) Bridget folds a square piece of paper twice and subsequently cuts it along the two lines as shown in the picture. How many pieces of paper does she obtain this way?
+
+\begin{center}
+\includegraphics[scale=0.75]{imgs/2019-g5-6-p15-1.png}
+\end{center}
+
+
+\begin{center}
+\begin{asy}
+/* Math Kangaroo G5-6 2019 P15, revised by Teacher David */
+size(10cm);
+defaultpen(linewidth(1pt));
+
+pair a = (0,0);
+pair b = (4,0);
+pair c = (7,0.5);
+
+draw(box(a, a+(2,2))); draw((1,0)--(1,2), dotted);
+draw(box(b, b+(1,2))); draw((4,1)--(5,1), dotted);
+draw(box(c, c+(1,1)));
+
+draw((6.9,1)--(8.1,1));
+draw((7.5,0.4)--(7.5,1.6));
+
+draw((2.6,1)--(3.4,1), arrow=Arrow(), linewidth(0.6));
+draw((5.6,1)--(6.4,1), arrow=Arrow(), linewidth(0.6));
+
+draw((0.5,2.2)..(1,2.4)..(1.5,2.2), arrow=Arrow(TeXHead));
+draw((5.2,1.5)..(5.4,1)..(5.2,0.5), arrow=Arrow(TeXHead));
+
+label(rotate(-90)*"\faicon{scissors}", (7.52, 1.8));
+label(rotate(180)*"\faicon{scissors}", (8.3, 0.98));
+\end{asy}
+\end{center}
+
+
+$\text{(A) } 6 \qquad $$\text{(B) } 8\qquad $$\text{(C) } 9 \qquad $$\text{(D) } 12 \qquad $$\text{(E) } 16$
+
+\item (Math Kangaroo G5-6 2019 P22) The cardboard is folded up into a $2 \times 1 \times 1$ box. 
+\begin{center}
+\begin{asy}
+/* Math Kangaroo G5-6 2019, P22-1, revised by Teacher Devon */
+size(4cm);
+import math;
+defaultpen(linewidth(1pt));
+
+void plotsquare(pair x, pen color) { filldraw(shift(x)*box((0,0),(1,1)), color); }
+pair [] s = {(0,0), (2,-1),(3,1)};	
+for (int i=0; i<3; ++i) { plotsquare(s[i], white); }
+	
+pair [] s = {(0,1), (1,-1),(2,-2),(2,1)};	
+for (int i=0; i<4; ++i) { plotsquare(s[i], gray); }	
+
+pair [] s = { (1,-2),(1,0),(2,0)};	
+for (int i=0; i<3; ++i) { plotsquare(s[i], black); }
+	
+\end{asy}
+\end{center}
+
+
+
+%\begin{center}
+%\includegraphics[scale=0.7]{imgs/2019-g5-6-p22-1.png}
+%\end{center}
+Which of the pictures does not show the box?
+\begin{center}
+\includegraphics[scale=0.7]{imgs/2019-g5-6-p22-2.png}
+\end{center}
+
+\begin{center}
+\begin{asy}
+/* Math Kangaroo G5-6 2019, P22-2, revised by Teacher Devon */
+size(15cm);
+defaultpen(linewidth(1pt));
+
+void plotsquare(pair x, pen color) { filldraw(shift(x)*box((0,0),(1,1)), color); }
+pair [] s = {(0,0), (1,0), (4,0), (5,0), (8,0), (9,0), (12,0), (13,0), (16,0), (17,0)};	
+pen [] c = {black, black, black, black, black, gray, gray, white, gray, gray, gray};
+for (int i=0; i<s.length; ++i) { 
+    plotsquare(s[i], c[i]); 
+}
+
+void drawtop(pair x, pen color) {
+    path p = (0,0)--(1/3,1/3)--(4/3,1/3)--(1,0) -- cycle;
+    filldraw(shift(x)*p, color); 
+}
+
+pair [] t1 = {(0,1), (1,1), (4,1), (5,1), (8,1), (9,1), (12,1), (13,1), (16,1), (17,1)};
+pen [] t2 = {gray, gray, white, white, gray, white, black, black, black, gray};
+for (int i=0; i<t1.length; ++i) {
+    drawtop(t1[i], t2[i]);
+}
+
+void drawside(pair x, pen color) {
+    path p = (0,0) -- (0,1)--(1/3,1/3+1)--(1/3,1/3) -- cycle;
+    filldraw(shift(x)*p, color); 
+}
+
+pair [] s1 = {(2,0), (6,0), (10,0), (14,0), (18,0)};
+pen [] s2 = {white, gray, white, white, white};
+for (int i=0; i<s1.length; ++i) {
+    drawside(s1[i], s2[i]);
+}
+
+string [] a = {"(A)", "(B)", "(C)", "(D)", "(E)"};
+pair [] b = {(1,-0.5), (5,-0.5), (9,-0.5), (13,-0.5), (17,-0.5)};
+for (int i=0; i<a.length; ++i) {
+    label(a[i], b[i]);
+}
+\end{asy}
+\end{center}
+
+$\text{(A) } \text{A} \qquad $$\text{(B) } \text{B} \qquad $$\text{(C) } \text{C}  \qquad $$\text{(D) } \text{D} \qquad $$\text{(E) } \text{E}$
+
+
 
 
 \end{enumerate}
